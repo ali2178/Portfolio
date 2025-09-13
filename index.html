@@ -4,15 +4,897 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بورتفوليو علي رياض محمد المزين | مطور ويب</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --olive-dark: #3b5323;
+            --olive-medium: #556b2f;
+            --olive-light: #6b8e23;
+            --olive-lighter: #8aa36b;
+            --olive-very-light: #b8c99d;
+            --text-light: #f0f0f0;
+            --text-lighter: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background: linear-gradient(135deg, var(--olive-dark) 0%, #2c3e19 100%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* شريط التنقل */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(59, 83, 35, 0.95);
+            backdrop-filter: blur(10px);
+            color: var(--text-lighter);
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 5px 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: var(--text-lighter);
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li a i {
+            margin-left: 5px;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--text-lighter);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* قسم البطل */
+        .hero {
+            padding: 150px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%238aa36b" fill-opacity="0.15" d="M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom/cover;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin-bottom: 25px;
+            border: 4px solid var(--olive-light);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            object-fit: cover;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px var(--olive-lighter);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #e6e6e6, #ffffff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--text-light);
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 28px;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, var(--olive-medium), var(--olive-light));
+        }
+
+        .btn-secondary {
+            background: linear-gradient(to right, var(--olive-light), var(--olive-lighter));
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn i {
+            margin-left: 8px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%); 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-light);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        /* الأقسام العامة */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title span {
+            position: relative;
+            z-index: 1;
+            padding: 0 15px;
+            color: var(--text-lighter);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--olive-medium), var(--olive-light));
+            border-radius: 3px;
+        }
+
+        /* قسم عني */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .skills h3, .timeline-section h3 {
+            margin-bottom: 20px;
+            color: var(--text-lighter);
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .skills h3::after, .timeline-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(to right, var(--olive-medium), var(--olive-light));
+        }
+
+        .skills-grid {
+            display: grid;
+            gap: 25px;
+        }
+
+        .skill-category {
+            background: rgba(85, 107, 47, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-category h4 {
+            margin-bottom: 15px;
+            color: var(--text-lighter);
+        }
+
+        .skill-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .skill-item {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .skill-name {
+            font-weight: 500;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--olive-medium), var(--olive-light));
+            border-radius: 4px;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 15px;
+            height: 100%;
+            width: 2px;
+            background: var(--olive-light);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-right: 40px;
+            padding-left: 20px;
+        }
+
+        .timeline-date {
+            position: absolute;
+            right: -15px;
+            top: 0;
+            background: var(--olive-light);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .timeline-content {
+            background: rgba(85, 107, 47, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-content h4 {
+            color: var(--text-lighter);
+            margin-bottom: 5px;
+        }
+
+        .timeline-content p {
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
+        /* قسم المشاريع */
+        .projects {
+            background: linear-gradient(to bottom, var(--olive-dark) 0%, #2c3e19 100%);
+        }
+
+        .project-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(85, 107, 47, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-image {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(59, 83, 35, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .card-overlay span {
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            margin-bottom: 10px;
+            color: var(--text-lighter);
+        }
+
+        .card-content p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .technologies span {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .project-link, .github-link {
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .project-link {
+            background: var(--olive-medium);
+            color: white;
+        }
+
+        .github-link {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+        }
+
+        .project-link:hover, .github-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-link i, .github-link i {
+            margin-left: 5px;
+        }
+
+        .project-link.disabled {
+            background: rgba(255, 255, 255, 0.1);
+            cursor: not-allowed;
+        }
+
+        /* قسم التواصل */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 15px;
+            color: var(--text-lighter);
+        }
+
+        .contact-info > p {
+            margin-bottom: 30px;
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--olive-medium);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .contact-text h4 {
+            margin-bottom: 5px;
+            color: var(--text-lighter);
+        }
+
+        .contact-link {
+            color: #4a90e2;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-link:hover {
+            color: #7ab0ee;
+            text-decoration: underline;
+        }
+
+        .social-links h4 {
+            margin-bottom: 15px;
+            color: var(--text-lighter);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            color: var(--text-light);
+        }
+
+        .social-link:hover {
+            background: var(--olive-medium);
+            transform: translateY(-3px);
+            color: white;
+        }
+
+        .contact-form {
+            background: rgba(85, 107, 47, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-form h3 {
+            margin-bottom: 20px;
+            color: var(--text-lighter);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-lighter);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--olive-light);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, var(--olive-medium), var(--olive-light));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .contact-form button:hover {
+            background: linear-gradient(to right, var(--olive-light), var(--olive-lighter));
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* التذييل */
+        .footer {
+            background: var(--olive-dark);
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--text-lighter);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--olive-medium);
+            color: var(--text-lighter);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* زر العودة للأعلى */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 100;
+            background: var(--olive-medium);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #scrollToTopBtn.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #scrollToTopBtn:hover {
+            background: var(--olive-light);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* تأثيرات للعناصر عند الظهور */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar .container {
+                padding: 10px 15px;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                background: var(--olive-dark);
+                width: 80%;
+                height: calc(100vh - 70px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.active {
+                right: 0;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .project-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 120px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .skill-item {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            
+            .card-actions {
+                flex-direction: column;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-icon {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="navbar">
         <div class="container">
             <div class="logo">
-                <img src="https://via.placeholder.com/50x50?text=Logo" alt="لوجو">
                 <span>علي رياض محمد المزين</span>
             </div>
             <nav>
@@ -217,21 +1099,25 @@
                 
                 <div class="card">
                     <div class="card-image">
-                        <img src="https://th.bing.com/th/id/OIP.qnUhCYn1R6E1bsKMEovKOAHaJW?w=123&h=180&c=7&r=0&o=7&pid=1.7&rm=3" alt="مشروع 3">
-                        <div class="card-overlay">
-                            <span>قريباً</span>
-                        </div>
+                        <a href="https://ali2178.github.io/Web-shop/" target="_blank">
+                            <img src="https://th.bing.com/th/id/OIP.7UJ7w8Hw2Q2Q2Q2Q2Q2Q2QHaE8?w=279&h=186&c=7&r=0&o=5&pid=1.7" alt="متجر إلكتروني">
+                            <div class="card-overlay">
+                                <span>عرض المشروع</span>
+                            </div>
+                        </a>
                     </div>
                     <div class="card-content">
-                        <h3>مشروع تحت التطوير</h3>
-                        <p>وصف قصير للمشروع الثالث الذي يعمل عليه حاليًا.</p>
+                        <h3>متجر إلكتروني</h3>
+                        <p>متجر إلكتروني متكامل يتضمن عرض المنتجات، سلة التسوق، وخيارات الدفع مع واجهة مستخدم سهلة الاستخدام.</p>
                         <div class="technologies">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
                             <span>React</span>
-                            <span>Node.js</span>
-                            <span>MongoDB</span>
                         </div>
                         <div class="card-actions">
-                            <a href="#" class="project-link disabled">قريباً</a>
+                            <a href="https://ali2178.github.io/Web-shop/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> عرض المشروع</a>
+                            <a href="https://github.com/ali2178/Web-shop" target="_blank" class="github-link"><i class="fab fa-github"></i> الكود</a>
                         </div>
                     </div>
                 </div>
@@ -332,7 +1218,6 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="https://via.placeholder.com/40x40?text=Logo" alt="لوجو">
                     <span>علي رياض محمد المزين</span>
                 </div>
                 
@@ -358,6 +1243,184 @@
 
     <button id="scrollToTopBtn" title="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // عناصر القائمة المنزلقة للجوّال
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('nav ul');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // إغلاق القائمة عند النقر على رابط
+            const navLinks = document.querySelectorAll('nav ul li a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            // تأثير التمرير السلس للروابط
+            const allLinks = document.querySelectorAll('a[href^="#"]');
+            allLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    
+                    if (targetId === '#') return;
+                    
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        const offsetTop = targetSection.offsetTop - 80;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // تأثير التمرير السلس للأزرار
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        const targetSection = document.querySelector(href);
+                        if (targetSection) {
+                            const offsetTop = targetSection.offsetTop - 80;
+                            window.scrollTo({
+                                top: offsetTop,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // إظهار/إخفاء زر العودة للأعلى
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.classList.add('show');
+                } else {
+                    scrollToTopBtn.classList.remove('show');
+                }
+            });
+            
+            // العودة إلى الأعلى عند النقر على الزر
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // تأثيرات الظهور عند التمرير
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // تحريك أشرطة المهارات عند التمرير
+            const skillBars = document.querySelectorAll('.skill-progress');
+            const skillsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const width = entry.target.getAttribute('data-width');
+                        entry.target.style.width = width;
+                        skillsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            skillBars.forEach(bar => {
+                skillsObserver.observe(bar);
+            });
+            
+            // تأثيرات خاصة للشريط العلوي عند التمرير
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // إرسال نموذج التواصل
+            const contactForm = document.getElementById('messageForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // هنا يمكنك إضافة كود إرسال النموذج إلى الخادم
+                    alert('شكراً لك على رسالتك! سأعود إليك في أقرب وقت ممكن.');
+                    this.reset();
+                });
+            }
+            
+            // تأثيرات المؤشر (النسخة المخففة)
+            document.addEventListener('mousemove', function(e) {
+                let x = e.clientX;
+                let y = e.clientY;
+                
+                let glow = document.getElementById('cursor-glow');
+                if (!glow) {
+                    glow = document.createElement('div');
+                    glow.id = 'cursor-glow';
+                    document.body.appendChild(glow);
+                    
+                    // تصميم تأثير المؤشر الخفيف
+                    glow.style.position = 'fixed';
+                    glow.style.pointerEvents = 'none';
+                    glow.style.width = '80px';
+                    glow.style.height = '80px';
+                    glow.style.borderRadius = '50%';
+                    glow.style.background = 'rgba(255, 255, 255, 0.05)';
+                    glow.style.boxShadow = '0 0 15px 5px rgba(255, 255, 255, 0.1)';
+                    glow.style.transition = 'transform 0.15s ease-out, opacity 0.2s ease-out';
+                    glow.style.zIndex = '9999';
+                    glow.style.opacity = '0';
+                }
+                
+                // إظهار المؤشر عند الحركة
+                glow.style.opacity = '1';
+                glow.style.left = (x - 40) + 'px';
+                glow.style.top = (y - 40) + 'px';
+                
+                // إخفاء المؤشر عند التوقف
+                clearTimeout(window.cursorTimeout);
+                window.cursorTimeout = setTimeout(() => {
+                    glow.style.opacity = '0';
+                }, 1000);
+            });
+            
+            // إخفاء المؤشر عند مغادرة الصفحة
+            document.addEventListener('mouseleave', function() {
+                let glow = document.getElementById('cursor-glow');
+                if (glow) {
+                    glow.style.opacity = '0';
+                }
+            });
+            
+            // إظهار المؤشر عند العودة إلى الصفحة
+            document.addEventListener('mouseenter', function() {
+                let glow = document.getElementById('cursor-glow');
+                if (glow) {
+                    glow.style.opacity = '1';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
