@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بورتفوليو شخصي</title>
+    <title>بورتفوليو علي رياض محمد المزين | مطور ويب</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header class="navbar">
@@ -16,56 +17,146 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#home">الرئيسية</a></li>
-                    <li><a href="#about">عني</a></li>
-                    <li><a href="#projects">المشاريع</a></li>
-                    <li><a href="#contact">التواصل</a></li>
+                    <li><a href="#home"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="#about"><i class="fas fa-user"></i> عني</a></li>
+                    <li><a href="#projects"><i class="fas fa-code"></i> المشاريع</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> التواصل</a></li>
                 </ul>
             </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </header>
 
     <section id="home" class="hero">
+        <div class="hero-background"></div>
         <div class="container">
-            <img src="https://placehold.co/200x200?text=Profile" alt="صورة شخصية" class="profile-img">
-            <h1>علي رياض محمد المزين</h1>
-            <p>نبذة قصيرة عني: مطور ويب شغوف بالتكنولوجيا.</p>
-            <div class="buttons">
-                <a href="#projects" class="btn">المشاريع</a>
-                <a href="#contact" class="btn">التواصل</a>
+            <div class="hero-content">
+                <img src="https://placehold.co/200x200?text=Profile" alt="صورة شخصية" class="profile-img">
+                <h1>علي رياض محمد المزين</h1>
+                <p class="hero-description">مطور واجهات أمامية شغوف بإنشاء تجارب ويب تفاعلية وجذابة</p>
+                <div class="buttons">
+                    <a href="#projects" class="btn btn-primary"><i class="fas fa-code"></i> المشاريع</a>
+                    <a href="#contact" class="btn btn-secondary"><i class="fas fa-paper-plane"></i> التواصل</a>
+                </div>
             </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>مرر للأسفل</span>
+            <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
     <section id="about" class="about">
         <div class="container">
-            <h2>عني</h2>
-            <div class="skills">
-                <h3>المهارات</h3>
-                <ul>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                    <li>React</li>
-                    <li>مهارة التواصل</li>
-                    <li>التعامل مع Google Workspace</li>
-                    <li>اساسيات UI/UX</li>
-                    <li>Git&amp;GitHub</li>
-                    <li>API Integration</li>
-                    <li>Teamwork</li>
-                    <li>VS Code</li>
-                    <li>Package Manager (NPM)</li>
-                </ul>
-            </div>
-            <div class="timeline">
-                <h3>الخط الزمني</h3>
-                <div class="timeline-item">
-                    <h4>2020 - الآن</h4>
-                    <p>مطور ويب في شركة XYZ</p>
+            <h2 class="section-title"><span>عني</span></h2>
+            <div class="about-content">
+                <div class="skills">
+                    <h3>المهارات التقنية</h3>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>تطوير الواجهات الأمامية</h4>
+                            <div class="skill-list">
+                                <div class="skill-item">
+                                    <span class="skill-name">HTML/CSS</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">JavaScript</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">React</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="80%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>أدوات التطوير</h4>
+                            <div class="skill-list">
+                                <div class="skill-item">
+                                    <span class="skill-name">Git & GitHub</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">VS Code</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="95%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">NPM</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>مهارات أخرى</h4>
+                            <div class="skill-list">
+                                <div class="skill-item">
+                                    <span class="skill-name">UI/UX Design</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="70%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">API Integration</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="80%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Google Workspace</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="timeline-item">
-                    <h4>2018 - 2020</h4>
-                    <p>مصمم ويب في شركة ABC</p>
+                
+                <div class="timeline-section">
+                    <h3>الخبرة العملية والتعليم</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">2020 - الآن</div>
+                            <div class="timeline-content">
+                                <h4>مطور واجهات أمامية</h4>
+                                <p>شركة XYZ</p>
+                                <p>تطوير وتنفيذ واجهات مستخدم تفاعلية باستخدام React وJavaScript.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2018 - 2020</div>
+                            <div class="timeline-content">
+                                <h4>مصمم ويب</h4>
+                                <p>شركة ABC</p>
+                                <p>تصميم واجهات مستخدم جذابة وسهلة الاستخدام لمختلف المشاريع.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2014 - 2018</div>
+                            <div class="timeline-content">
+                                <h4>بكالوريوس في علوم الحاسوب</h4>
+                                <p>جامعة العلوم والتكنولوجيا</p>
+                                <p>تخصص في تطوير البرمجيات وتصميم الويب.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -73,26 +164,76 @@
 
     <section id="projects" class="projects">
         <div class="container">
-            <h2>المشاريع</h2>
+            <h2 class="section-title"><span>المشاريع</span></h2>
             <div class="project-cards">
                 <div class="card">
-                    <a href="https://ali2178.github.io/WabTO-DO/" target="_blank">
-                        <img src="https://www.bing.com/th/id/OIP.O7kEXAy4rX2XdA1sYNmuVQHaE8?w=279&h=211&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2" alt="TO_DO List">
-                    </a>
-                    <h3>TO_DO List</h3>
-                    <p>تدوين المهام  اليومبة</p>
+                    <div class="card-image">
+                        <a href="https://ali2178.github.io/WabTO-DO/" target="_blank">
+                            <img src="https://www.bing.com/th/id/OIP.O7kEXAy4rX2XdA1sYNmuVQHaE8?w=279&h=211&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2" alt="TO_DO List">
+                            <div class="card-overlay">
+                                <span>عرض المشروع</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-content">
+                        <h3>TO_DO List</h3>
+                        <p>تطبيق ويب لإدارة المهام اليومية يتضمن إضافة، تعديل وحذف المهام مع حفظ البيانات محلياً.</p>
+                        <div class="technologies">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://ali2178.github.io/WabTO-DO/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> عرض المشروع</a>
+                            <a href="https://github.com/ali2178/WabTO-DO" target="_blank" class="github-link"><i class="fab fa-github"></i> الكود</a>
+                        </div>
+                    </div>
                 </div>
+                
                 <div class="card">
-                    <a href="https://ali2178.github.io/Weather/" target="_blank">
-                        <img src="https://www.bing.com/th/id/OIP.TG-ZrNumUbtKshc0yH9K7gHaEV?w=251&h=211&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2" alt="مشروع 2">
-                    </a>
-                    <h3>Weather</h3>
-                    <p>تطبيق لمعرفة احوال الطقس</p>
+                    <div class="card-image">
+                        <a href="https://ali2178.github.io/Weather/" target="_blank">
+                            <img src="https://www.bing.com/th/id/OIP.TG-ZrNumUbtKshc0yH9K7gHaEV?w=251&h=211&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2" alt="تطبيق الطقس">
+                            <div class="card-overlay">
+                                <span>عرض المشروع</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-content">
+                        <h3>تطبيق الطقس</h3>
+                        <p>تطبيق للطقس يعرض حالة الطقس الحالية والتوقعات لـ5 أيام مع واجهة مستخدم تفاعلية.</p>
+                        <div class="technologies">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>API</span>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://ali2178.github.io/Weather/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> عرض المشروع</a>
+                            <a href="https://github.com/ali2178/Weather" target="_blank" class="github-link"><i class="fab fa-github"></i> الكود</a>
+                        </div>
+                    </div>
                 </div>
+                
                 <div class="card">
-                    <img src="https://th.bing.com/th/id/OIP.qnUhCYn1R6E1bsKMEovKOAHaJW?w=123&h=180&c=7&r=0&o=7&pid=1.7&rm=3" alt="مشروع 3">
-                    <h3>مشروع 3</h3>
-                    <p>وصف قصير للمشروع الثالث.</p>
+                    <div class="card-image">
+                        <img src="https://th.bing.com/th/id/OIP.qnUhCYn1R6E1bsKMEovKOAHaJW?w=123&h=180&c=7&r=0&o=7&pid=1.7&rm=3" alt="مشروع 3">
+                        <div class="card-overlay">
+                            <span>قريباً</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>مشروع تحت التطوير</h3>
+                        <p>وصف قصير للمشروع الثالث الذي يعمل عليه حاليًا.</p>
+                        <div class="technologies">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                        </div>
+                        <div class="card-actions">
+                            <a href="#" class="project-link disabled">قريباً</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -100,23 +241,122 @@
 
     <section id="contact" class="contact">
         <div class="container">
-            <h2>التواصل</h2>
-            <p>البريد الإلكتروني: <a href="mailto:alire6649@gmail.com" class="contact-link">alire6649@gmail.com</a></p>
-            <p>رقم الهاتف: <a href="tel:01221931063" class="contact-link">01221931063</a></p>
-            <div class="social-links">
-                <a href="https://linkedin.com/in/example" target="_blank">LinkedIn</a>
-                <a href="https://facebook.com/example" target="_blank">Facebook</a>
+            <h2 class="section-title"><span>التواصل</span></h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>ابق على تواصل</h3>
+                    <p>أنا دائماً متحمس للعمل على مشاريع جديدة ومثيرة للاهتمام. لا تتردد في التواصل معي!</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>البريد الإلكتروني</h4>
+                                <a href="mailto:alire6649@gmail.com" class="contact-link">alire6649@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>رقم الهاتف</h4>
+                                <a href="tel:01221931063" class="contact-link">01221931063</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>الموقع</h4>
+                                <span>مصر</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <h4>وسائل التواصل الاجتماعي</h4>
+                        <div class="social-icons">
+                            <a href="https://linkedin.com/in/example" target="_blank" class="social-link">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/ali2178" target="_blank" class="social-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://facebook.com/example" target="_blank" class="social-link">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="https://twitter.com/example" target="_blank" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>أرسل لي رسالة</h3>
+                    <form id="messageForm">
+                        <div class="form-group">
+                            <label for="name">الاسم</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">الموضوع</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">الرسالة</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">إرسال الرسالة <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2023 علي رياض محمد المزين. جميع الحقوق محفوظة.</p>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="https://via.placeholder.com/40x40?text=Logo" alt="لوجو">
+                    <span>علي رياض محمد المزين</span>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="#home">الرئيسية</a>
+                    <a href="#about">عني</a>
+                    <a href="#projects">المشاريع</a>
+                    <a href="#contact">التواصل</a>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="https://linkedin.com/in/example" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/ali2178" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://facebook.com/example" target="_blank"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 علي رياض محمد المزين. جميع الحقوق محفوظة.</p>
+            </div>
         </div>
     </footer>
 
-    <button id="scrollToTopBtn" title="العودة للأعلى">&#8679;</button>
+    <button id="scrollToTopBtn" title="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
 
     <script src="script.js"></script>
 </body>
